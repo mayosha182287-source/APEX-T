@@ -1,0 +1,702 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APEX-T | Sustainable Data Center Cooling</title>
+<meta name="description" content="APEX-T is an intelligent sustainable cooling concept for data centers, designed to reduce water and electricity consumption.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#101c2c;
+  --panel:#17283a;
+  --panel2:#1c3044;
+  --teal:#19b7a5;
+  --cyan:#45d6c5;
+  --white:#f2f8fc;
+  --muted:#a8bac9;
+  --blue:#174A85;
+  --red:#8B252D;
+}
+
+* {margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+
+body {
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.7;
+}
+
+a {text-decoration:none;color:inherit;}
+
+header {
+  position:fixed;
+  top:0;left:0;width:100%;
+  z-index:1000;
+  background:rgba(16,28,44,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(69,214,197,.15);
+}
+
+nav {
+  max-width:1200px;
+  margin:auto;
+  padding:18px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo {
+  font-family:Orbitron,sans-serif;
+  font-size:27px;
+  font-weight:800;
+  letter-spacing:1px;
+  color:white;
+}
+
+.logo .a {color:var(--blue);}
+.logo .t {color:var(--red);}
+
+.nav-links {
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+.nav-links a {
+  font-size:13px;
+  color:var(--muted);
+  transition:.3s;
+}
+
+.nav-links a:hover {color:var(--cyan);}
+
+.menu-btn {
+  display:none;
+  color:white;
+  background:none;
+  border:0;
+  font-size:27px;
+  cursor:pointer;
+}
+
+section {padding:100px 8%;scroll-margin-top:75px;}
+.container {max-width:1150px;margin:auto;}
+
+.hero {
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:140px;
+  background:
+  radial-gradient(ellipse at 80% 40%,rgba(25,183,165,.15),transparent 45%),
+  var(--bg);
+}
+
+.hero-content {max-width:850px;}
+
+.tag {
+  display:inline-block;
+  color:var(--cyan);
+  border:1px solid rgba(69,214,197,.4);
+  padding:7px 15px;
+  border-radius:30px;
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:25px;
+}
+
+.hero h1 {
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(42px,7vw,78px);
+  line-height:1.15;
+  margin-bottom:25px;
+}
+
+.hero h1 span {color:var(--cyan);}
+
+.hero p {
+  max-width:700px;
+  color:var(--muted);
+  font-size:17px;
+  margin-bottom:35px;
+}
+
+.btn {
+  display:inline-block;
+  background:var(--teal);
+  color:#071b25;
+  padding:13px 27px;
+  border-radius:7px;
+  font-weight:700;
+  transition:.3s;
+}
+
+.btn:hover {background:var(--cyan);transform:translateY(-3px);}
+
+.hero-stats {
+  display:flex;
+  gap:40px;
+  margin-top:65px;
+  flex-wrap:wrap;
+}
+
+.hero-stats h3 {
+  color:var(--cyan);
+  font-size:29px;
+  font-family:Orbitron,sans-serif;
+}
+
+.hero-stats p {font-size:12px;margin:0;}
+
+.section-label {
+  color:var(--cyan);
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.section-title {
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(27px,4vw,40px);
+  margin-bottom:20px;
+}
+
+.section-desc {
+  color:var(--muted);
+  max-width:750px;
+  margin-bottom:45px;
+}
+
+.problem-grid,.solution-grid,.team-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+}
+
+.card {
+  background:var(--panel);
+  border:1px solid rgba(69,214,197,.12);
+  border-radius:14px;
+  padding:28px;
+  transition:.3s;
+}
+
+.card:hover {
+  transform:translateY(-5px);
+  border-color:var(--teal);
+}
+
+.card-icon {font-size:30px;margin-bottom:15px;}
+.card h3 {font-size:19px;margin-bottom:12px;}
+.card p {color:var(--muted);font-size:14px;}
+
+.challenge-section {background:#132336;}
+
+.challenge-list {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.challenge {
+  padding:23px;
+  border-left:3px solid var(--teal);
+  background:var(--panel);
+  border-radius:8px;
+}
+
+.challenge h3 {margin-bottom:8px;font-size:16px;}
+.challenge p {font-size:14px;color:var(--muted);}
+
+.solution-box {
+  background:linear-gradient(135deg,#172f42,#173d46);
+  border:1px solid rgba(69,214,197,.25);
+  border-radius:18px;
+  padding:40px;
+}
+
+.solution-box p {color:var(--muted);margin-bottom:18px;}
+.solution-box strong {color:var(--cyan);}
+
+.process {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:18px;
+  margin-top:35px;
+}
+
+.step {
+  background:var(--panel);
+  border-radius:12px;
+  padding:25px 20px;
+  border-top:3px solid var(--teal);
+  text-align:center;
+}
+
+.step-number {
+  color:var(--cyan);
+  font-family:Orbitron,sans-serif;
+  font-size:26px;
+  margin-bottom:12px;
+}
+
+.step h3 {font-size:16px;margin-bottom:10px;}
+.step p {font-size:13px;color:var(--muted);}
+
+.flow {
+  background:#132336;
+  border:1px solid rgba(69,214,197,.15);
+  padding:35px;
+  border-radius:15px;
+  margin-top:45px;
+  text-align:center;
+}
+
+.flow-items {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:22px;
+}
+
+.flow-item {
+  background:var(--panel2);
+  border:1px solid var(--teal);
+  border-radius:9px;
+  padding:13px 17px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.arrow {color:var(--cyan);font-size:22px;}
+
+.results {
+  background:linear-gradient(130deg,#142b3d,#123b42);
+}
+
+.results-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:25px;
+  margin-top:35px;
+}
+
+.result-card {
+  background:rgba(16,28,44,.7);
+  border:1px solid rgba(69,214,197,.3);
+  padding:35px 25px;
+  text-align:center;
+  border-radius:15px;
+}
+
+.result-number {
+  color:var(--cyan);
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(35px,5vw,48px);
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.result-card p {color:var(--muted);font-size:14px;}
+
+.results-note {
+  margin-top:25px;
+  color:#b7c8d4;
+  font-size:12px;
+  text-align:center;
+}
+
+.team-card {text-align:center;padding:40px 25px;}
+
+.avatar {
+  width:85px;height:85px;
+  margin:0 auto 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),#245a6b);
+  font-family:Orbitron,sans-serif;
+  font-size:27px;
+  color:white;
+}
+
+.team-card p {color:var(--cyan);}
+
+footer {
+  text-align:center;
+  padding:35px 15px;
+  background:#0b1623;
+  color:var(--muted);
+  font-size:13px;
+  border-top:1px solid rgba(69,214,197,.15);
+}
+
+footer strong {color:var(--cyan);}
+
+@media(max-width:850px) {
+  .menu-btn {display:block;}
+  .nav-links {
+    display:none;
+    position:absolute;
+    top:68px;left:0;
+    width:100%;
+    padding:25px;
+    background:#101c2c;
+    flex-direction:column;
+    gap:18px;
+    border-bottom:1px solid var(--teal);
+  }
+  .nav-links.active {display:flex;}
+  section {padding:80px 6%;}
+  .hero {min-height:95vh;}
+  .hero-stats {gap:25px;}
+  .solution-box {padding:25px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+  <a href="#home" class="logo"><span class="a">A</span>PEX-<span class="t">T</span></a>
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#challenges">Challenges</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#mechanism">Mechanism</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+</nav>
+</header>
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+<div class="container hero-content">
+  <div class="tag">SMART TECHNOLOGY • SUSTAINABLE FUTURE</div>
+  <h1>APEX-T<br><span>Cooling the Future.</span></h1>
+  <p>
+    APEX-T is an intelligent and sustainable cooling concept
+    designed to reduce water and electricity consumption in
+    data centers through AI-based thermal prediction,
+    adaptive cooling, and thermal energy storage.
+  </p>
+  <a href="#solution" class="btn">Discover Our Innovation →</a>
+
+  <div class="hero-stats">
+    <div>
+      <h3>20–30%</h3>
+      <p>Target Water Savings</p>
+    </div>
+    <div>
+      <h3>15–20%</h3>
+      <p>Target Energy Savings</p>
+    </div>
+    <div>
+      <h3>AI</h3>
+      <p>Intelligent Management</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PROBLEM -->
+
+<section id="problem">
+<div class="container">
+  <div class="section-label">01 / THE PROBLEM</div>
+  <h2 class="section-title">Why Do Data Centers Need Better Cooling?</h2>
+  <p class="section-desc">
+    The rapid growth of artificial intelligence and digital services
+    increases data-center workloads. As GPUs perform intensive
+    computations, they generate significant heat that must be managed
+    continuously.
+  </p>
+
+  <div class="problem-grid">
+    <div class="card">
+      <div class="card-icon">💧</div>
+      <h3>High Water Consumption</h3>
+      <p>
+        Conventional cooling infrastructure can consume large amounts
+        of water, putting additional pressure on limited water resources.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>High Energy Demand</h3>
+      <p>
+        Continuous cooling and heat-rejection processes increase
+        electricity demand and operational costs.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🔥</div>
+      <h3>Uneven Heat Distribution</h3>
+      <p>
+        Different GPU workloads generate different thermal loads,
+        while conventional systems may not respond efficiently
+        to changing temperatures.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌍</div>
+      <h3>Environmental Impact</h3>
+      <p>
+        Increasing resource consumption contributes to the
+        environmental footprint of digital infrastructure.
+      </p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CHALLENGES -->
+
+<section class="challenge-section" id="challenges">
+<div class="container">
+  <div class="section-label">02 / THE CHALLENGES</div>
+  <h2 class="section-title">Challenges We Aim to Address</h2>
+  <p class="section-desc">
+    Developing a sustainable cooling solution requires balancing
+    thermal performance, resource efficiency, and system reliability.
+  </p>
+
+  <div class="challenge-list">
+    <div class="challenge">
+      <h3>Resource Waste</h3>
+      <p>Reducing unnecessary water use and improving water recirculation.</p>
+    </div>
+    <div class="challenge">
+      <h3>Cooling Energy</h3>
+      <p>Reducing the energy required to manage changing thermal loads.</p>
+    </div>
+    <div class="challenge">
+      <h3>Temperature Fluctuations</h3>
+      <p>Responding to sudden increases in GPU temperature and workload.</p>
+    </div>
+    <div class="challenge">
+      <h3>Thermal Storage</h3>
+      <p>Managing excess heat and storing thermal energy for controlled release.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SOLUTION -->
+
+<section id="solution">
+<div class="container">
+  <div class="section-label">03 / OUR INNOVATION</div>
+  <h2 class="section-title">Introducing APEX-T</h2>
+
+  <div class="solution-box">
+    <p>
+      APEX-T proposes an intelligent cooling system that combines
+      <strong>AI-powered thermal prediction, adaptive water-flow
+      management, and Phase Change Material (PCM) thermal storage.</strong>
+    </p>
+
+    <p>
+      Instead of relying only on conventional reactive cooling,
+      the system aims to predict thermal surges and manage cooling
+      according to actual GPU requirements.
+    </p>
+
+    <p>
+      A proposed composite consisting of <strong>85% paraffin
+      and 15% expanded graphite</strong> acts as a thermal storage
+      material. The PCM absorbs heat during phase change, helping
+      manage peak thermal loads.
+    </p>
+
+    <p>
+      The system also aims to maintain a closed water-cooling loop,
+      reducing unnecessary water loss and improving resource efficiency.
+    </p>
+  </div>
+</div>
+</section>
+
+<!-- MECHANISM -->
+
+<section id="mechanism">
+<div class="container">
+  <div class="section-label">04 / HOW IT WORKS</div>
+  <h2 class="section-title">The APEX-T Mechanism</h2>
+  <p class="section-desc">
+    The system follows an intelligent cycle that monitors,
+    predicts, regulates, stores, and manages thermal energy.
+  </p>
+
+  <div class="process">
+    <div class="step">
+      <div class="step-number">01</div>
+      <h3>Temperature Monitoring</h3>
+      <p>Temperature sensors continuously monitor GPU and cooling-system conditions.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">02</div>
+      <h3>AI Prediction</h3>
+      <p>An LSTM-based model analyzes time-series workload and temperature data to forecast thermal surges.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">03</div>
+      <h3>Adaptive Water Flow</h3>
+      <p>The controller adjusts pump operation and valves according to the cooling demand.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">04</div>
+      <h3>PCM Thermal Storage</h3>
+      <p>The paraffin-graphite composite absorbs excess thermal energy during phase change.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">05</div>
+      <h3>Heat Exchange</h3>
+      <p>A heat exchanger helps remove stored heat and supports the PCM regeneration process.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">06</div>
+      <h3>Water Recirculation</h3>
+      <p>The cooled water returns to the cooling loop for reuse, reducing unnecessary water loss.</p>
+    </div>
+  </div>
+
+  <div class="flow">
+    <h3>System Architecture</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:8px;">
+      A simplified representation of the proposed cooling cycle
+    </p>
+
+    <div class="flow-items">
+      <div class="flow-item">GPU / Heat Source</div>
+      <span class="arrow">→</span>
+      <div class="flow-item">Temperature Sensors</div>
+      <span class="arrow">→</span>
+      <div class="flow-item">AI Controller</div>
+      <span class="arrow">→</span>
+      <div class="flow-item">Adaptive Pump</div>
+      <span class="arrow">→</span>
+      <div class="flow-item">PCM Storage</div>
+      <span class="arrow">→</span>
+      <div class="flow-item">Heat Exchanger</div>
+      <span class="arrow">→</span>
+      <div class="flow-item">Water Reuse</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- RESULTS -->
+
+<section class="results" id="results">
+<div class="container">
+  <div class="section-label">05 / EXPECTED IMPACT</div>
+  <h2 class="section-title">Our Expected Results</h2>
+  <p class="section-desc">
+    APEX-T aims to improve data-center resource efficiency
+    through intelligent cooling control and thermal energy management.
+  </p>
+
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-number">20–30%</div>
+      <h3>Water Consumption Reduction</h3>
+      <p>
+        Target reduction through improved water management
+        and closed-loop water recirculation.
+      </p>
+    </div>
+
+    <div class="result-card">
+      <div class="result-number">15–20%</div>
+      <h3>Electricity Use Reduction</h3>
+      <p>
+        Target reduction through predictive cooling,
+        adaptive pumping, and thermal energy storage.
+      </p>
+    </div>
+  </div>
+
+  <p class="results-note">
+    *These percentages represent projected target outcomes of the
+    proposed system. Experimental testing and comparison with a
+    baseline cooling system are required to validate them.
+  </p>
+</div>
+</section>
+
+<!-- TEAM -->
+
+<section id="team">
+<div class="container">
+  <div class="section-label">06 / OUR TEAM</div>
+  <h2 class="section-title">Meet The Researchers</h2>
+  <p class="section-desc">
+    Two researchers working toward a more sustainable
+    future for digital infrastructure.
+  </p>
+
+  <div class="team-grid">
+    <div class="card team-card">
+      <div class="avatar">MM</div>
+      <h3>Mai Mahmoud</h3>
+      <p>Researcher & Project Developer</p>
+    </div>
+
+    <div class="card team-card">
+      <div class="avatar">YA</div>
+      <h3>Yasmin Ahmed</h3>
+      <p>Researcher & Project Developer</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="logo"><span class="a">A</span>PEX-<span class="t">T</span></div>
+  <p style="margin:12px 0;">
+    Smarter Cooling. Less Waste. A Greener Digital Future.
+  </p>
+  <p>© 2026 APEX-T | All Rights Reserved</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
+}
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("navLinks").classList.remove("active");
+  });
+});
+</script>
+
+</body>
+</html>
